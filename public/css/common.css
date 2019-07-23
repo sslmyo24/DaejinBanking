@@ -1,0 +1,35 @@
+/*setting*/
+* {
+	margin: 0;
+	padding: 0;
+}
+
+ul, li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+/*body*/
+body {
+	width: 100vw;
+	height: 100vh;
+	background: linear-gradient(135deg, #e9eaf1, #d5d7e4);
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: center;
+	-ms-align-items: center;
+	align-items: center;
+}
+
+#wrap {
+	background: #fff;
+	width: 60%;
+	height: 70%;
+	box-shadow: 0 0 30px #d5d5d5;
+}
