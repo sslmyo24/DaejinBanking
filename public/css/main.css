@@ -27,3 +27,8 @@ h1 {
 #gnb a:hover {
 	text-decoration: underline;
 }
+
+#wrap {
+	position: relative;
+}
+

@@ -14,7 +14,7 @@
 			$this->type = isset($get_param[0]) && strlen($get_param[0]) ? $get_param[0] : 'home';
 			$this->action = isset($get_param[1]) ? $get_param[1] : null;
 			$this->idx = isset($get_param[2]) ? $get_param[2] : null;
-			$this->include_file = isset($this->action) ? $$this->action : $this->type;
+			$this->include_file = isset($this->action) ? $this->action : $this->type;
 			$this->isMember = isset($_SESSION['member']);
 			$this->member = $this->isMember ? $_SESSION['member'] : null;
 		}

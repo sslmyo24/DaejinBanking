@@ -13,7 +13,7 @@
 	 */
 	function move ($url = false) {
 		echo "<script>";
-		$url ? "loction.replace('{$url}')" : "history.back();";
+		echo $url ? "location.replace('{$url}')" : "history.back();";
 		echo "</script>";
 		exit;
 	}

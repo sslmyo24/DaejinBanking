@@ -92,11 +92,11 @@
 		 * @return [type]         [description]
 		 */
 		function getColumn ($arr, $cancel) {
-			$column;
+			$column = "";
 			$this->execArr = [];
 			$cancel = explode("/", $cancel);
 			foreach ($arr as $key => $val) {
-				if (in_array($key, $cancel)) continue;
+				if (in_array($key, $cancel) || !strlen($val)) continue;
 				$column .= ", {$key} = ?";
 				$this->execArr[] = $val;
 			}
