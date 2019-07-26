@@ -36,7 +36,7 @@
 		 * @param  array  $param sql datas
 		 * @return object        query result
 		 */
-		private function query ($sql, $param = false) {
+		function query ($sql, $param = false) {
 			$res = $this->init()->prepare($sql);
 			if ($param) $this->execArr = $param;
 			if (!$res->execute($this->execArr)) {

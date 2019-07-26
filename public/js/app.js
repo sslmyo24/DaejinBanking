@@ -1,13 +1,5 @@
 const app = _ => {
-	let today = new Date();
-	let yyyy = today.getFullYear();
-	let mm = today.getMonth() + 1;
-	let dd = today.getDate();
-	if (dd < 10) dd = '0'+dd;
-	if (mm < 10) mm = '0'+mm;
-	today = `${yyyy}-${mm}-${dd}`;
-	$(`input[type="date"]`).attr('min', today).val(today);
-
+	if (!$(`input[type="date"]`).val()) setMinDate();
 	setContent();
 }
 
@@ -24,9 +16,20 @@ const changeContent = function () {
 }
 
 const setMinDate = function () {
+	let today = new Date();
+	let yyyy = today.getFullYear();
+	let mm = today.getMonth() + 1;
+	let dd = today.getDate();
+	if (mm < 10) mm = '0'+mm;
+	if (dd < 10) dd = '0'+dd;
+	today = `${yyyy}-${mm}-${dd}`;
+	$(`input[type="date"]`).attr('min', today).val(today);
+}
+
+const changeDate = function () {
 	$(this).parent().find(".end-date").attr('min', $(this).val()).val($(this).val());
 }
 
 $(app)
 .on("click", "#tab-list > .content-tab", changeContent)
-.on("change", ".start-date", setMinDate)
+.on("change", ".start-date", changeDate)

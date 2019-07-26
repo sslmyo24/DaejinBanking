@@ -26,5 +26,10 @@
 .input-text {border: none; border-bottom: 1px solid #aaa; outline: none; transition: .5s; width: 150px; height: 20px; line-height: 20px; margin-right: 30px;}
 .input-text:focus {border-color: #09f;}
 .input-text::placeholder {color: #ddd;}
-.submit-button {background: #09f; width: 80px; height: 30px; border: none; color: #fff; transition: .5s; cursor: pointer;}
+.submit-button {background: #09f; padding: 0 20px; height: 30px; border: none; color: #fff; transition: .5s; cursor: pointer;}
 .other-btn {margin-left: 20px; width: 40px; height: 30px; border: none; background: #09f; color: #fff;}
+input[readonly] {background: #ccc; border: none;}
+
+.list-table {width: 50%; margin: 0 auto;}
+.list-table > caption {font-size: 25px; margin-bottom: 20px; font-weight: bold;}
+.list-table th {background: #09f;}
