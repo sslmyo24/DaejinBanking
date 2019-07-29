@@ -26,8 +26,8 @@
 				<li><a href="<?php echo HOME ?>/member"><i class="fa fa-users"></i><span class="nav-name">고객관리</span></a></li>
 				<li><a href="<?php echo HOME ?>/loan"><i class="fa fa-hand-holding-usd"></i><span class="nav-name">여신관리</span></a></li>
 				<li><a href="<?php echo HOME ?>/claim"><i class="fa fa-envelope-open-text"></i><span class="nav-name">청구관리</span></a></li>
-				<li><a href="<?php echo HOME ?>/"><i class="fa fa-money-check-alt"></i><span class="nav-name">수납관리</span></a></li>
-				<li><a href="<?php echo HOME ?>/"><i class="fa fa-table"></i><span class="nav-name">회계관리</span></a></li>
+				<li><a href="<?php echo HOME ?>/accept"><i class="fa fa-money-check-alt"></i><span class="nav-name">수납관리</span></a></li>
+				<li><a href="<?php echo HOME ?>/account"><i class="fa fa-table"></i><span class="nav-name">회계관리</span></a></li>
 			</ul>
 		</nav>
 
