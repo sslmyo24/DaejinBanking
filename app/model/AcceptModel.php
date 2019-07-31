@@ -12,9 +12,9 @@
 					$amtodr = implode(",", $amtodr);
 					$claim_list = $this->get_list("rntamt, prnamt, intamt, bildat", "kamtmp", "where cntnum = {$_GET['cntnum']} and amtodr in ($amtodr)");
 					foreach ($claim_list as $data) {
-						$this->querySet("insert", "ktrnmp", "trndat = now(), trnseq = {$trnseq}, actcde = 110, acttyp = 1, dramtw = {$data->prnamt}, reqdat = {$data->bildat}");
-						$this->querySet("insert", "ktrnmp", "trndat = now(), trnseq = {$trnseq}, actcde = 901, acttyp = 1, dramtw = {$data->intamt}, reqdat = {$data->bildat}");
-						$this->querySet("insert", "ktrnmp", "trndat = now(), trnseq = {$trnseq}, actcde = 101, acttyp = 2, cramtw = {$data->rntamt}, reqdat = {$data->bildat}");
+						$this->querySet("insert", "ktrnmp", "trndat = now(), trnseq = {$trnseq}, actcde = 110, acttyp = 1, dramtw = {$data->prnamt}");
+						$this->querySet("insert", "ktrnmp", "trndat = now(), trnseq = {$trnseq}, actcde = 901, acttyp = 1, dramtw = {$data->intamt}");
+						$this->querySet("insert", "ktrnmp", "trndat = now(), trnseq = {$trnseq}, actcde = 101, acttyp = 2, cramtw = {$data->rntamt}");
 						$trnseq++;
 					}
 					$this->querySet("update", "kamtmp", "recdat = now() where cntnum = '{$_GET['cntnum']}' and amtodr in ({$amtodr})");

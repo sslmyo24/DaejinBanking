@@ -16,8 +16,8 @@
 					$more_sql = ", cntrec = now()";
 					$action = "insert";
 					$table = "kcntmp";
-					$msg = false;
-					$url = HOME."/loan?back=".$cntnum;
+					$msg = '체결되었습니다.';
+					$url = HOME."/loan";
 					break;
 				case 'contract_update' :
 					access($this->rowCount("SELECT * FROM kamtmp where cntnum = ?", [$cntnum]) == 0, "이미 스케쥴이 생성된 계약입니다.");

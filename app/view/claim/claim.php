@@ -16,7 +16,7 @@
 						<th>계약번호</th>
 						<th>납입일</th>
 						<th>청구금액</th>
-						<th>청구서</th>
+						<th>청구여부</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -26,40 +26,26 @@
 						<td><?php echo $data->cntnum ?></td>
 						<td><?php echo $data->amtdue ?></td>
 						<td><?php echo number_format($data->rntamt) ?></td>
-						<td><input type="text" <?php if ($data->bildat == null): ?> onchange="if ($(this).val() === 'Yes') location.replace('<?php echo HOME ?>/claim?cntnum=<?php echo $data->cntnum ?>&amtodr=<?php echo $data->amtodr ?>')" <?php else: ?> value="Yes" readonly <?php endif; ?>></td>
+						<td><?php if ($data->bildat !== '0000-00-00'): ?>청구 완료<?php endif; ?></td>
 					</tr>
 				<?php endforeach; ?>
 				</tbody>
 			</table>
+			<button type="button" class="submit-button" style="display: block; margin: 50px auto;" onclick="location.replace('<?php echo HOME ?>/claim')">이전으로</button>
 		<?php else: ?>
 			<h2 style="font-size: 17px">청구서 생성</h2>
-			<form <?php if (isset($_GET['cntnum'])): ?>method="post"<?php else: ?>method="get"<?php endif; ?> style="margin-top: 40px">
-				<?php if (isset($_GET['cntnum'])): ?>
+			<form method="post" style="margin-top: 40px">
 				<input type="hidden" name="action" value="claim_insert">
-				<div class="form-input">
-					<span class="data-name">고객명</span>
-					<input type="text" class="input-text" disabled name="clhnme" value="<?php echo $this->contract_data->clhnme ?>">
-				</div>
-				<div class="form-input">
-					<span class="data-name">계약번호</span>
-					<input type="text" class="input-text" disabled name="cntnum" value="<?php echo $this->contract_data->cntnum ?>">
-				</div>
-				<div class="form-input">
-					<span class="data-name">납입일</span>
-					<input type="text" class="input-text" disabled name="amtdue" value="<?php echo $this->contract_data->amtdue ?>">
-				</div>
-				<div class="form-input">
-					<span class="data-name">청구금액</span>
-					<input type="text" class="input-text" disabled name="amtdue" value="<?php echo number_format($this->contract_data->rntamt) ?>">
-				</div>
-				<div class="form-input">
-					<span class="data-name">고객주소</span>
-					<input type="text" class="input-text" disabled name="amtdue" value="<?php echo $this->contract_data->cladrs ?>">
-				</div>
-				<?php else: ?>
 				<div style="margin: 20px 0"><input type="date" class="start-date" name="start_date"> ~ <input type="date" class="end-date" name="end_date"></div>
-				<?php endif; ?>
 				<button type="submit" class="submit-button">생성</button>
+				<button type="button" class="submit-button" id="search-button">조회</button>
 			</form>
 		<?php endif; ?>
 		</div>
+		<script>
+			$(`#search-button`).click(function(event) {
+				const startDate = $(`.start-date`).val();
+				const endDate = $(`.end-date`).val();
+				location.replace(`<?php echo HOME ?>/claim?start_date=${startDate}&end_date=${endDate}`);
+			});
+		</script>

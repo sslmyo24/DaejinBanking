@@ -30,6 +30,8 @@ const changeDate = function () {
 	$(this).parent().find(".end-date").attr('min', $(this).val()).val($(this).val());
 }
 
+const numberFormat = v => new Intl.NumberFormat().format(v)
+
 $(app)
 .on("click", "#tab-list > .content-tab", changeContent)
 .on("change", ".start-date", changeDate)

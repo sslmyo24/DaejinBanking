@@ -31,14 +31,13 @@
 					<tbody>
 				<?php if (isset($_GET['cntnum'])): ?>
 					<?php foreach ($this->claim_list as $data): ?>
-						<input type="hidden" name="amtodr[]" value="<?php echo $data->amtodr ?>">
 						<tr>
 							<td><?php echo $data->clhnme ?></td>
 							<td><?php echo $_GET['cntnum'] ?></td>
 							<td><?php echo $data->amtodr ?></td>
 							<td><?php echo $data->amtdue ?></td>
 							<td><?php echo number_format($data->rntamt) ?></td>
-							<td><input type="text"></td>
+							<td><?php if ($data->recdat == '0000-00-00'): ?><input type="text" data-order="<?php echo $data->amtodr ?>" class="rntamt"><?php else: ?>수납 완료<?php endif; ?></td>
 						</tr>
 					<?php endforeach; ?>
 				<?php endif; ?>
@@ -46,3 +45,8 @@
 				</table>
 				<button type="submit" class="submit-button" style="display: block; margin: 50px auto">수납처리</button>
 			</form>
+			<script>
+				$(".rntamt").change(function(event) {
+					$(this).parents('tbody').prepend(`<input type="hidden" name="amtodr[]" value="${$(this).data('order')}">`);
+				});
+			</script>

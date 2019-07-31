@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- 생성 시간: 19-07-29 08:55
+-- 생성 시간: 19-07-31 06:11
 -- 서버 버전: 10.1.36-MariaDB
 -- PHP 버전: 7.2.10
 
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- 데이터베이스: `daejinbanking`
 --
+CREATE DATABASE IF NOT EXISTS `daejinbanking` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `daejinbanking`;
 
 -- --------------------------------------------------------
 
@@ -90,7 +92,7 @@ INSERT INTO `kactmp` (`actcde`, `actnme`) VALUES
 
 CREATE TABLE `kamtmp` (
   `idx` int(11) NOT NULL,
-  `cntnum` int(11) NOT NULL COMMENT '계약번호',
+  `cntnum` bigint(20) NOT NULL COMMENT '계약번호',
   `amtodr` int(11) NOT NULL COMMENT '회차',
   `amtdue` date NOT NULL COMMENT '납기일',
   `rntamt` int(11) NOT NULL COMMENT '원리금',
@@ -106,18 +108,14 @@ CREATE TABLE `kamtmp` (
 --
 
 INSERT INTO `kamtmp` (`idx`, `cntnum`, `amtodr`, `amtdue`, `rntamt`, `prnamt`, `intamt`, `prnmal`, `bildat`, `recdat`) VALUES
-(13, 1, 1, '2019-08-26', 84375, 82459, 1917, 915625, '2019-07-29', '2019-07-29'),
-(14, 1, 2, '2019-09-26', 84375, 82620, 1755, 831250, '0000-00-00', '0000-00-00'),
-(15, 1, 3, '2019-10-26', 84375, 82782, 1593, 746874, '0000-00-00', '0000-00-00'),
-(16, 1, 4, '2019-11-26', 84375, 82944, 1432, 662499, '0000-00-00', '0000-00-00'),
-(17, 1, 5, '2019-12-26', 84375, 83105, 1270, 578124, '0000-00-00', '0000-00-00'),
-(18, 1, 6, '2020-01-26', 84375, 83267, 1108, 493749, '0000-00-00', '0000-00-00'),
-(19, 1, 7, '2020-02-26', 84375, 83429, 946, 409374, '0000-00-00', '0000-00-00'),
-(20, 1, 8, '2020-03-26', 84375, 83591, 785, 324999, '0000-00-00', '0000-00-00'),
-(21, 1, 9, '2020-04-26', 84375, 83752, 623, 240623, '0000-00-00', '0000-00-00'),
-(22, 1, 10, '2020-05-26', 84375, 83914, 461, 156248, '0000-00-00', '0000-00-00'),
-(23, 1, 11, '2020-06-26', 84375, 84076, 299, 71873, '0000-00-00', '0000-00-00'),
-(24, 1, 12, '2020-07-26', 84375, 84237, 138, 0, '0000-00-00', '0000-00-00');
+(1, 20190730001, 1, '2019-10-30', 252161, 248328, 3833, 1747839, '2019-07-30', '2019-07-30'),
+(2, 20190730001, 2, '2020-01-30', 252161, 248811, 3350, 1495678, '0000-00-00', '0000-00-00'),
+(3, 20190730001, 3, '2020-04-30', 252161, 249294, 2867, 1243517, '0000-00-00', '0000-00-00'),
+(4, 20190730001, 4, '2020-07-30', 252161, 249778, 2383, 991356, '0000-00-00', '0000-00-00'),
+(5, 20190730001, 5, '2020-10-30', 252161, 250261, 1900, 739195, '0000-00-00', '0000-00-00'),
+(6, 20190730001, 6, '2021-01-30', 252161, 250744, 1417, 487034, '0000-00-00', '0000-00-00'),
+(7, 20190730001, 7, '2021-04-30', 252161, 251228, 933, 234873, '0000-00-00', '0000-00-00'),
+(8, 20190730001, 8, '2021-07-30', 252161, 251711, 450, 0, '0000-00-00', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -150,7 +148,7 @@ INSERT INTO `kcltmp` (`clcode`, `clhnme`, `cladrs`, `cmpnum`, `clblic`, `cltel`)
 
 CREATE TABLE `kcntmp` (
   `clcode` int(11) NOT NULL COMMENT '이용자코드',
-  `cntnum` int(11) NOT NULL COMMENT '계약번호',
+  `cntnum` bigint(20) NOT NULL COMMENT '계약번호',
   `cntcls` varchar(1) NOT NULL COMMENT '계약상태',
   `cntbrn` varchar(1) NOT NULL COMMENT '부점코드',
   `cntdat` date NOT NULL COMMENT '계약체결일',
@@ -165,7 +163,7 @@ CREATE TABLE `kcntmp` (
 --
 
 INSERT INTO `kcntmp` (`clcode`, `cntnum`, `cntcls`, `cntbrn`, `cntdat`, `cntend`, `rntcal`, `userid`, `cntrec`) VALUES
-(1, 1, 'A', 'S', '2019-07-26', '2020-07-26', 1, '한희정', '2019-07-26');
+(1, 20190730001, 'B', 'S', '2019-07-30', '2021-07-30', 1, '한희정', '2019-07-30');
 
 -- --------------------------------------------------------
 
@@ -174,7 +172,7 @@ INSERT INTO `kcntmp` (`clcode`, `cntnum`, `cntcls`, `cntbrn`, `cntdat`, `cntend`
 --
 
 CREATE TABLE `kcstmp` (
-  `cntnum` int(11) NOT NULL COMMENT '계약번호',
+  `cntnum` bigint(20) NOT NULL COMMENT '계약번호',
   `acqcst` int(11) NOT NULL COMMENT '여신금액',
   `cntpym` int(11) NOT NULL COMMENT '총납일횟수',
   `basrat` float NOT NULL COMMENT '기준금리',
@@ -189,7 +187,7 @@ CREATE TABLE `kcstmp` (
 --
 
 INSERT INTO `kcstmp` (`cntnum`, `acqcst`, `cntpym`, `basrat`, `rntrat`, `spread`, `grend`, `amtcyc`) VALUES
-(1, 1000000, 12, 1.8, 2.3, 0.5, '2020-07-26', 1);
+(20190730001, 2000000, 8, 1.8, 2.3, 0.5, '2021-07-30', 3);
 
 -- --------------------------------------------------------
 
@@ -240,7 +238,7 @@ INSERT INTO `kratfp` (`RATCDE`, `RATNME`, `INTRAT`) VALUES
 --
 
 CREATE TABLE `ktrnmp` (
-  `trntyp` int(11) NOT NULL DEFAULT '1' COMMENT '청구서종류',
+  `idx` int(11) NOT NULL,
   `trndat` date NOT NULL COMMENT '지급일(입금일)',
   `trnseq` int(11) NOT NULL COMMENT '지급청구서번호',
   `actcde` int(11) NOT NULL COMMENT '계정코드',
@@ -253,10 +251,13 @@ CREATE TABLE `ktrnmp` (
 -- 테이블의 덤프 데이터 `ktrnmp`
 --
 
-INSERT INTO `ktrnmp` (`trntyp`, `trndat`, `trnseq`, `actcde`, `acttyp`, `dramtw`, `cramtw`) VALUES
-(1, '2019-07-29', 1, 110, 1, 82459, 0),
-(1, '2019-07-29', 1, 901, 1, 1917, 0),
-(1, '2019-07-29', 1, 101, 2, 0, 84375);
+INSERT INTO `ktrnmp` (`idx`, `trndat`, `trnseq`, `actcde`, `acttyp`, `dramtw`, `cramtw`) VALUES
+(1, '2019-07-30', 1, 110, 1, 248328, 0),
+(2, '2019-07-30', 1, 901, 1, 3833, 0),
+(3, '2019-07-30', 1, 101, 2, 0, 252161),
+(20, '2019-07-30', 2, 101, 1, 123123, 0),
+(21, '2019-07-30', 2, 120, 1, 123123, 0),
+(22, '2019-07-30', 2, 101, 2, 0, 246246);
 
 --
 -- 덤프된 테이블의 인덱스
@@ -293,6 +294,12 @@ ALTER TABLE `kratfp`
   ADD PRIMARY KEY (`RATCDE`);
 
 --
+-- 테이블의 인덱스 `ktrnmp`
+--
+ALTER TABLE `ktrnmp`
+  ADD PRIMARY KEY (`idx`);
+
+--
 -- 덤프된 테이블의 AUTO_INCREMENT
 --
 
@@ -300,7 +307,13 @@ ALTER TABLE `kratfp`
 -- 테이블의 AUTO_INCREMENT `kamtmp`
 --
 ALTER TABLE `kamtmp`
-  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- 테이블의 AUTO_INCREMENT `ktrnmp`
+--
+ALTER TABLE `ktrnmp`
+  MODIFY `idx` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

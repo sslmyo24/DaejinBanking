@@ -7,7 +7,7 @@
 
 			switch ($action) {
 				case 'claim_insert':
-					$this->querySet("update", "kamtmp", "bildat = now() where cntnum = '{$_GET['cntnum']}' and amtodr = '{$_GET['amtodr']}'");
+					$this->querySet("update", "kamtmp", "bildat = now() where amtdue >= '{$start_date}' and amtdue <= '{$end_date}'");
 					alert("생성되었습니다.");
 					move(HOME."/claim");
 					break;

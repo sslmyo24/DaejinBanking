@@ -14,6 +14,7 @@
 
 	<script src="<?php echo JS ?>/jquery.min.js"></script>
 	<script src="<?php echo JS ?>/app.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<?php endif; ?>
 </head>
 <body>
