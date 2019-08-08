@@ -29,9 +29,8 @@
 						<div class="form-input">
  							<span class="data-name">납입방법</span>
 							<select class="input-text" name="rntcal" required>
-								<option value="1">1 : 현금</option>
-								<option value="2">2 : 카드</option>
-								<option value="3">3 : 계좌이체</option>
+								<option value="1">1 : 카드</option>
+								<option value="2">2 : 계좌이체</option>
 							</select>
 						</div>
 						<div class="form-input"><span class="data-name">작업자</span><input type="text" class="input-text" name="userid" required></div>
@@ -96,9 +95,8 @@
 						<div class="form-input">
  							<span class="data-name">납입방법</span>
 							<select class="input-text" name="rntcal" required>
-								<option <?php if (isset($this->search_data) && $this->search_data->rntcal == '1'): ?> selected <?php endif; ?> value="1">1 : 현금</option>
-								<option <?php if (isset($this->search_data) && $this->search_data->rntcal == '2'): ?> selected <?php endif; ?> value="2">2 : 카드</option>
-								<option <?php if (isset($this->search_data) && $this->search_data->rntcal == '3'): ?> selected <?php endif; ?> value="3">3 : 계좌이체</option>
+								<option <?php if (isset($this->search_data) && $this->search_data->rntcal == '1'): ?> selected <?php endif; ?> value="1">1 : 카드</option>
+								<option <?php if (isset($this->search_data) && $this->search_data->rntcal == '2'): ?> selected <?php endif; ?> value="2">2 : 계좌이체</option>
 							</select>
 						</div>
 						<div class="form-input"><span class="data-name">작업자</span><input type="text" class="input-text" name="userid" required <?php if (isset($this->search_data)): ?> value="<?php echo $this->search_data->userid ?>" <?php endif; ?>></div>
