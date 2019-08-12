@@ -6,11 +6,15 @@
 			extract($_POST);
 
 			switch ($action) {
+
+				// 수납시 회계 전표에 추가
 				case 'accept':
 					$trnseq = $this->fetch("SELECT trnseq FROM ktrnmp group by trnseq order by trnseq limit 1");
 					$trnseq = $trnseq ? $trnseq->trnseq + 1 : 1;
-					$amtodr = implode(",", $amtodr);
-					$claim_list = $this->get_list("rntamt, prnamt, intamt, bildat", "kamtmp", "where cntnum = {$_GET['cntnum']} and amtodr in ($amtodr)");
+
+					$amtodr = implode(",", $amtodr); // 스케쥴 회차 목록
+					$claim_list = $this->get_list("rntamt, prnamt, intamt, bildat", "kamtmp", "where cntnum = {$_GET['cntnum']} and amtodr in ($amtodr)"); // 회차에 따른 스케쥴 정보 목록
+					
 					foreach ($claim_list as $data) {
 						$this->querySet("insert", "ktrnmp", "trndat = now(), trnseq = {$trnseq}, actcde = 110, acttyp = 1, dramtw = {$data->prnamt}");
 						$this->querySet("insert", "ktrnmp", "trndat = now(), trnseq = {$trnseq}, actcde = 901, acttyp = 1, dramtw = {$data->intamt}");

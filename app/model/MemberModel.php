@@ -8,11 +8,15 @@
 			extract($_POST);
 
 			switch ($action) {
+
+				// 신규 이용자
 				case 'new_member':
 					$action = "insert";
 					$msg = "등록되었습니다.";
 					$url = HOME."/member";
 					break;
+
+				// 기존 이용자 수정
 				case 'old_member_update':
 					$more_sql = " where clcode = '{$_GET['clcode']}'";
 					$action = "update";

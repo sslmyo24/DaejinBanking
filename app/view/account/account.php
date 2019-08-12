@@ -1,3 +1,6 @@
+
+<!-- vuejs 사용 -->
+
 <h1>회계관리</h1>
 <div id="main-content">
 	<h2 style="text-align: center;">회계전표</h2>

@@ -13,7 +13,7 @@
 
 		/**
 		 * connected database and get database
-		 * @return [type] [description]
+		 * @return object       database object
 		 */
 		private function init () {
 			$option = array(\PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_OBJ, \PDO::ATTR_ERRMODE => \PDO::ERRMODE_WARNING);
@@ -21,10 +21,7 @@
 			return $this->db;
 		}
 
-		/**
-		 * disconnected database
-		 * @return [type] [description]
-		 */
+		// disconnected database
 		private function dbClose () {
 			if ($this->close) $this->db = null;
 			$this->close = true;
